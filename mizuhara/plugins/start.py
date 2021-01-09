@@ -60,18 +60,12 @@ async def start(c: Mizuhara, m: Message):
                     InlineKeyboardButton(
                         "📚 " + _("start.commands_btn"), callback_data="commands"
                     )
-                ]
-                + [
-                    InlineKeyboardButton(
-                        "ℹ️ " + _("start.infos_btn"), callback_data="infos"
-                    )
-                ], 
+                ] 
                 + [
                     InlineKeyboardButton(
                         "➕ " + _("start.add_chat_btn"),
                         url=f"https://t.me/{me.username}?startgroup=new",
                     )
-                ],
             ]
         )
         await m.reply_text(
@@ -95,15 +89,9 @@ async def start_back(c: Mizuhara, m: CallbackQuery):
             ]
             + [
                 InlineKeyboardButton(
-                    "ℹ️ " + _("start.infos_btn"), callback_data="infos"
-                )
-            ],
-            + [
-                InlineKeyboardButton(
                     "➕ " + _("start.add_chat_btn"),
                     url=f"https://t.me/{me.username}?startgroup=new",
                 )
-            ],
         ]
     )
     await m.message.edit_text(_("start.private"), reply_markup=keyboard)
