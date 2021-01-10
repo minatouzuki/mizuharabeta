@@ -12,7 +12,7 @@ class Config:
     SUDO_USERS = os.environ.get("SUDO_USERS").split()
     WHITELIST_USERS = os.environ.get("WHITELIST_USERS").split()
     DB_URI = os.environ.get("DB_URI")
-    REDIS_URI = os.environ.get("REDIS_URI")
+    REDIS_HOST = os.environ.get("REDIS_HOST")
     REDIS_PORT = os.environ.get("REDIS_PORT")
     REDIS_PASS = os.environ.get("REDIS_PASS")
     NO_LOAD = os.environ.get("NO_LOAD").split()
@@ -37,7 +37,7 @@ class Development:
     SUDO_USERS = []
     WHITELIST_USERS = []
     DB_URI = "postgres://username:password@postgresdb:5432/database_name"
-    REDIS_URI = "REDIS_URI"
+    REDIS_HOST = "REDIS_HOST"
     REDIS_PORT = "REDIS_PORT"  # int type
     REDIS_PASS = "REDIS_PASS"
     NO_LOAD = []
