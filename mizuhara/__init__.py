@@ -24,49 +24,44 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     quit(1)  # Quit the Script
 
 # the secret configuration specific things
-try:
-    if os.environ.get("ENV"):
-        from mizuhara.sample_config import Config
-    else:
-        from mizuhara.config import Development as Config
-except Exception as ef:
-    print(ef)  # Print Error
+ENV = bool(os.environ.get('ENV', False))
 
+if ENV:
+TOKEN = os.environ.get('TOKEN', None)
 # Redis Cache
-REDIS_HOST = Config.REDIS_HOST
-REDIS_PORT = Config.REDIS_PORT
-REDIS_PASS = Config.REDIS_PASS
+REDIS_HOST = os.environ.get('REDIS_URI', None)
+REDIS_PORT = os.environ.get('REDIS_PORT', None)
+REDIS_PASS = os.environ.get('REDIS_PASS', None)
 redisClient = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASS)
 
 # Account Related
-TOKEN = Config.TOKEN
-APP_ID = Config.APP_ID
-API_HASH = Config.API_HASH
+APP_ID = os.environ.get('APP_ID', None)
+API_HASH = os.environ.get('API_HASH', None)
 
 # General Config
-MESSAGE_DUMP = Config.MESSAGE_DUMP
-SUPPORT_GROUP = Config.SUPPORT_GROUP
-SUPPORT_CHANNEL = Config.SUPPORT_CHANNEL
+MESSAGE_DUMP = os.environ.get('MESSAGE_DUMP', None)
+SUPPORT_GROUP = os.environ.get('SUPPORT_GROUP', None)
+SUPPORT_CHANNEL = os.environ.get('SUPPORT_CHANNEL', None)
 
 # Users Config
-OWNER_ID = Config.OWNER_ID
-DEV_USERS = Config.DEV_USERS
-SUDO_USERS = Config.SUDO_USERS
-WHITELIST_USERS = Config.WHITELIST_USERS
+OWNER_ID = os.environ.get('OWNER_ID', None)
+DEV_USERS = os.environ.get('DEV_USERS', None)
+SUDO_USERS = os.environ.get('SUDO_USERS', None)
+WHITELIST_USERS = os.environ.get('WHITELIST_USERS', None)
 SUPPORT_STAFF = list(
     dict.fromkeys([OWNER_ID] + SUDO_USERS + DEV_USERS + WHITELIST_USERS)
 )  # Remove duplicates!
 
 # Plugins, DB and Workers
-DB_URI = Config.DB_URI
-NO_LOAD = Config.NO_LOAD
-WORKERS = Config.WORKERS
+DB_URI = os.environ.get('DB_URI', None)
+NO_LOAD = os.environ.get('NO_LOAD', None)
+WORKERS = os.environ.get('WORKERS', None)
 
 # Prefixes
-PREFIX_HANDLER = Config.PREFIX_HANDLER
-DEV_PREFIX_HANDLER = Config.DEV_PREFIX_HANDLER
-ENABLED_LOCALES = Config.ENABLED_LOCALES
-VERSION = Config.VERSION
+PREFIX_HANDLER = os.environ.get('PREFIX_HANDLER', None)
+DEV_PREFIX_HANDLER = os.environ.get('DEV_PREFIX_HANDLER', None)
+ENABLED_LOCALES = os.environ.get('ENABLED_LOCALES', None)
+VERSION = os.environ.get('VERSION', None)
 
 HELP_COMMANDS = {}  # For help menu
 UPTIME = time.time()  # Check bot uptime
