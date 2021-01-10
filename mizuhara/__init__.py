@@ -28,7 +28,7 @@ ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
 # Redis Cache
-REDIS_HOST = os.environ.get('REDIS_URI', None)
+REDIS_HOST = os.environ.get('REDIS_HOST', None)
 REDIS_PORT = os.environ.get('REDIS_PORT', None)
 REDIS_PASS = os.environ.get('REDIS_PASS', None)
 redisClient = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASS)
