@@ -27,13 +27,12 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 ENV = bool(os.environ.get('ENV', False))
 
 if ENV:
-TOKEN = os.environ.get('TOKEN', None)
 # Redis Cache
 REDIS_HOST = os.environ.get('REDIS_URI', None)
 REDIS_PORT = os.environ.get('REDIS_PORT', None)
 REDIS_PASS = os.environ.get('REDIS_PASS', None)
 redisClient = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASS)
-
+TOKEN = os.environ.get('TOKEN', None)
 # Account Related
 APP_ID = os.environ.get('APP_ID', None)
 API_HASH = os.environ.get('API_HASH', None)
