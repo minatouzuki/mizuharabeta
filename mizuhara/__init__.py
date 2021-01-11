@@ -68,7 +68,7 @@ UPTIME = time.time()  # Check bot uptime
 
 def load_cmds(ALL_PLUGINS):
     for single in ALL_PLUGINS:
-        imported_module = importlib.import_module("alita.plugins." + single)
+        imported_module = importlib.import_module("mizuhara.plugins." + single)
         if not hasattr(imported_module, "__PLUGIN__"):
             imported_module.__PLUGIN__ = imported_module.__name__
 
